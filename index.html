@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title>Wahyu Sumartha</title>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script type="text/javascript" src="js/controller.js"></script>
+  <script type="text/javascript" src="js/featuredPostController.js"></script>
   <link rel="stylesheet" type="text/css" href="css/metro-bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/app.css">
   <link rel="stylesheet" href="docs/font-awesome.css">
@@ -54,77 +56,8 @@
 <!-- Main Container -->
 <div class="container-fluid" style=" margin-top: -35px;">
   <div class="row-fluid">
-    <div class="span8" style="">
-
-      <div class="thumbnail" style="border: 0px;">
-        <div class="row-fluid">
-          <div class="span5" style="">
-              <div class="thumbnail2">
-                <img src="http://placehold.it/360x268"/>
-              </div>
-          </div>
-          <div class="span7" style="">
-            <a href="#"><h2>Facebook Authentication with iOS SDK</h2></a>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="thumbnail" style="border: 0px;">
-        <div class="row-fluid">
-          <div class="span5" style="">
-              <div class="thumbnail2">
-                <img src="http://placehold.it/360x268"/>
-              </div>
-          </div>
-          <div class="span7" style="">
-            <a href="#"><h2>Facebook Authentication with iOS SDK</h2></a>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="thumbnail" style="border: 0px;">
-        <div class="row-fluid">
-          <div class="span5" style="">
-              <div class="thumbnail2">
-                <img src="http://placehold.it/360x268"/>
-              </div>
-          </div>
-          <div class="span7" style="">
-            <a href="#"><h2>Facebook Authentication with iOS SDK</h2></a>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="thumbnail" style="border: 0px;">
-        <div class="row-fluid">
-          <div class="span5" style="">
-              <div class="thumbnail2">
-                <img src="http://placehold.it/360x268"/>
-              </div>
-          </div>
-          <div class="span7" style="">
-            <a href="#"><h2>Facebook Authentication with iOS SDK</h2></a>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="thumbnail" style="border: 0px;">
-        <div class="row-fluid">
-          <div class="span5" style="">
-              <div class="thumbnail2">
-                <img src="http://placehold.it/360x268"/>
-              </div>
-          </div>
-          <div class="span7" style="">
-            <a href="#"><h2>Facebook Authentication with iOS SDK</h2></a>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          </div>
-        </div>
-      </div>
+    <div class="span8" style="" ng-controller="PostListCtrl">
+      <ng-include src="view"></ng-include>
 
       <!-- Pagination Area --> 
       <ul class="pager">
@@ -170,82 +103,26 @@
         <!-- Featured Post --> 
         <div class="row-fluid">
           <div class="span12" style="margin-top: -50px;">
-            <div class="page-header" style="">
+            <div class="page-header" style="border: 0px;">
               <h3>Featured Post</h3>
             </div>
           </div>
           
-          <div class="span12" style="margin-top: -50px;">
+          <div class="span12" style="margin-top: -50px;" ng-controller="FeaturedPostListCtrl">
 
-            <div class="thumbnail" style="border: 0px;">
-              <div class="row-fluid">
-                <div class="span5" style="">
-                  <div class="thumbnail2">
-                    <img src="http://placehold.it/360x268"/>
+              <div class="thumbnail" style="border: 0px;" ng-repeat="post in featuredPosts">
+                <div class="row-fluid">
+                  <div class="span5" style="">
+                    <div class="thumbnail2">
+                      <img src="{{post.coverImage}}"/>
+                    </div>
+                  </div>
+                  <div class="span7">
+                    <a href="#"><h4 style="">{{post.title}}</h4></a>
+                    <p style="margin-top: -10px;">{{post.description}}</p>
                   </div>
                 </div>
-                <div class="span7">
-                  <a href="#"><h4 style="">FACEBOOK AUTHENTICATION</h4></a>
-                  <p style="margin-top: -10px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has fdskajf dlakjd ;flakj df;lakj</p>
-                </div>
               </div>
-            </div>
-
-            <div class="thumbnail" style="border: 0px;">
-              <div class="row-fluid">
-                <div class="span5" style="">
-                  <div class="thumbnail2">
-                    <img src="http://placehold.it/360x268"/>
-                  </div>
-                </div>
-                <div class="span7">
-                  <a href="#"><h4 style="">FACEBOOK AUTHENTICATION</h4></a>
-                  <p style="margin-top: -10px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has fdskajf dlakjd ;flakj df;lakj</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="thumbnail" style="border: 0px;">
-              <div class="row-fluid">
-                <div class="span5" style="">
-                  <div class="thumbnail2">
-                    <img src="http://placehold.it/360x268"/>
-                  </div>
-                </div>
-                <div class="span7">
-                  <a href="#"><h4 style="">FACEBOOK AUTHENTICATION</h4></a>
-                  <p style="margin-top: -10px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has fdskajf dlakjd ;flakj df;lakj</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="thumbnail" style="border: 0px;">
-              <div class="row-fluid">
-                <div class="span5" style="">
-                  <div class="thumbnail2">
-                    <img src="http://placehold.it/360x268"/>
-                  </div>
-                </div>
-                <div class="span7">
-                  <a href="#"><h4 style="">FACEBOOK AUTHENTICATION</h4></a>
-                  <p style="margin-top: -10px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has fdskajf dlakjd ;flakj df;lakj</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="thumbnail" style="border: 0px;">
-              <div class="row-fluid">
-                <div class="span5" style="">
-                  <div class="thumbnail2">
-                    <img src="http://placehold.it/360x268"/>
-                  </div>
-                </div>
-                <div class="span7">
-                  <a href="#"><h4 style="">FACEBOOK AUTHENTICATION</h4></a>
-                  <p style="margin-top: -10px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has fdskajf dlakjd ;flakj df;lakj</p>
-                </div>
-              </div>
-            </div>
 
           </div>
         </div>
