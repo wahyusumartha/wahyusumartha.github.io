@@ -7,10 +7,11 @@ function PostListCtrl($scope, $http, $templateCache) {
 			cache: $templateCache
 		}).success(function(data, status, header, config){
 			/* Set View Model */
-			$scope.posts = data.posts; 
-			
+			$scope.posts = (data.posts); 
+
 			/* Set to List View */
 			$scope.view = './partials/recent-contents.html';
+
 		}).error(function(data, status, header, config){
 			$scope.posts = data || "Request Failed";
 			$scope.status = status;
